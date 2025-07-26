@@ -37,12 +37,12 @@ rating_label.place(rely=0.40, relx=0.02)
 var = tk.StringVar()
 var.set("")
 
-rating_radiobutton = tk.Radiobutton(root, text="Poor", variable="rating", value="A", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
-rating_radiobutton.place(rely=0.48, relx=0.05)
-rating_radiobutton = tk.Radiobutton(root, text="Average", variable="rating", value="B", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
-rating_radiobutton.place(rely=0.48, relx=0.2)
-rating_radiobutton = tk.Radiobutton(root, text="Excellent", variable="rating", value="C", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
-rating_radiobutton.place(rely=0.48, relx=0.42)
+rating1_radiobutton = tk.Radiobutton(root, text="Poor", variable=var, value="Poor", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
+rating1_radiobutton.place(rely=0.48, relx=0.05)
+rating2_radiobutton = tk.Radiobutton(root, text="Average", variable=var, value="Average", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
+rating2_radiobutton.place(rely=0.48, relx=0.2)
+rating3_radiobutton = tk.Radiobutton(root, text="Excellent", variable=var, value="Excellent", font=("Segoe UI",15), background="#201E59", foreground="white", indicatoron=1, relief='flat', borderwidth=0, highlightthickness=0, selectcolor="#201E59")
+rating3_radiobutton.place(rely=0.48, relx=0.42)
 
 
 feedback_label = ttk.Label(root, text="Enter feedback(Compulsory)", font=("Segoe UI",20), background="#201E59", foreground="white" )
@@ -53,8 +53,11 @@ feedback_textbox.place(relwidth=0.9, rely=0.65, relx=0.02)
 
 def submit():
     index = activity_listbox.curselection()
+    print(index)
     rating = var.get()
-    feedback = feedback_textbox.get()
+    print(rating)
+    feedback = feedback_textbox.get("1.0",tk.END)
+    print(feedback)
     if len(index) == 0 or rating == "" or feedback == "":
          messagebox.showinfo("ERROR", "Please enter all fields")
     else:
